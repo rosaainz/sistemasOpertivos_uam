@@ -16,6 +16,15 @@ void *llenarArreglo(void *arg){
   return 0;
 }
 
+void imprimirArreglo(){
+  for(int i=0; i<MAX; i++){
+    for(int j=0; j<MAX; j++){
+      printf("%d", ARR[i]);
+    }
+  }
+}
+
+
 int main(){
 
   pthread_t h[NUM_HILOS];
@@ -28,6 +37,7 @@ int main(){
     if(estado[i] == 0)
       pthread_join(h[i], NULL);
   }
+  imprimirArreglo();
 
 
   return 0;
