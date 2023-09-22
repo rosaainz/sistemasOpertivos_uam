@@ -9,5 +9,8 @@ int ARR[MAX];
 
 int main(){
 
+  pthread_t h[NUM_HILO];
+  int estado[NUM_HILO];
+
   return 0;
 }
