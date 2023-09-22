@@ -24,6 +24,10 @@ int main(){
   for(int i=0; i<NUM_HILOS; i++){
     estado[i] = pthread_create(&h[i], NULL, llenarArreglo, (void*)(size_t)i);
   }
+  for(int i=0; i<NUM_HILOS; i++){
+    if(estado[i] == 0)
+      pthread_join(h[i], NULL);
+  }
 
 
   return 0;
