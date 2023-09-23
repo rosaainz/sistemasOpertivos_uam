@@ -19,6 +19,11 @@ int main(){
   for(int i=0; i<NUM_H; i++){
     estado[i] = pthread_create(&h[i], NULL, llenarMatriz, (void*)(size_t)i);
   }
+  for(int i=0; i<NUM_H; i++){
+    if(estado[i] == 0){
+      pthread_join(h[i], NULL);
+    }
+  }
 
   return 0;
 }
