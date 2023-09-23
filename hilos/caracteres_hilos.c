@@ -3,10 +3,13 @@
 
 void *funcionConstantes(void *arg){
   char * cadena = (char*) arg;
+  printf("%s\n", cadena);
   return 0;
 }
 
 void *funcionVocales(void *arg){
+  char * cadena = (char*) arg;
+  printf("%s\n", cadena);
   return 0;
 }
 
