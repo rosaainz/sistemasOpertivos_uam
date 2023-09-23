@@ -10,13 +10,15 @@ void *llenarMatriz(){
 }
 
 void imprimirMatriz(){
-  return 0;
 }
 
 int main(){
   pthread_t h[NUM_H];
   int estado[NUM_H];
 
-  for(
+  for(int i=0; i<NUM_H; i++){
+    estado[i] = pthread_create(&h[i], NULL, llenarMatriz, (void*)(size_t)i);
+  }
+
   return 0;
 }
