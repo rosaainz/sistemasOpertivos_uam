@@ -15,7 +15,7 @@ void *funcionHilos(void *arg){
 }
 
 int main(){
-  pthread_t h[10];
+  pthread_t h1, h2;
   dato d1, d2;
 
   d1.id = 1;
