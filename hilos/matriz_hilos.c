@@ -5,11 +5,23 @@
 
 int A[MAX][MAX];
 
-void *llenarMatriz(){
+void *llenarMatriz(void *arg){
+  int numHilo = (int)(size_t)arg;
+
+  for(int i=0; i<MAX; i++){
+    for(int j=0; j<MAX; j++){
+      A[i][j] = numHilo;
+    }
+  }
   return 0;
 }
 
 void imprimirMatriz(){
+  for(int i=0; i<MAX; i++){
+   for(int j=0; j<MAX; j++){
+    printf("%d", A[i][j]);
+   }
+  }
 }
 
 int main(){
@@ -24,6 +36,8 @@ int main(){
       pthread_join(h[i], NULL);
     }
   }
+
+  imprimirMatriz();
 
   return 0;
 }
