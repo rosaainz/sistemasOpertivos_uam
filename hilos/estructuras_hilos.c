@@ -25,5 +25,11 @@ int main(){
   d2.valor = 'b';
 
 
+  pthread_create(&h1, NULL, funcionHilos, (void*)&d1);
+  pthread_create(&h2, NULL, funcionHilos, (void*)&d2);
+
+  pthread_join(h1, NULL);
+  pthread_join(h2, NULL);
+
   return 0;
 }
