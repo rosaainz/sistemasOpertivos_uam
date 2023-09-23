@@ -7,8 +7,10 @@ int A[MAX][MAX];
 
 void *llenarMatriz(void *arg){
   int numHilo = (int)(size_t)arg;
+  int inf = numHilo*10;
+  int sup = (numHilo+1)*10;
 
-  for(int i=0; i<MAX; i++){
+  for(int i=inf; i<sup; i++){
     for(int j=0; j<MAX; j++){
       A[i][j] = numHilo;
     }
@@ -21,6 +23,7 @@ void imprimirMatriz(){
    for(int j=0; j<MAX; j++){
     printf("%d", A[i][j]);
    }
+   printf("\n");
   }
 }
 
