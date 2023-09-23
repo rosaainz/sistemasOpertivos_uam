@@ -6,14 +6,14 @@
 int A[MAX][MAX];
 
 void *llenarMatriz(){
-
 }
 
 void imprimirMatriz(){
 }
 
 int main(){
-
+  pthread_t h[NUM_H];
+  int estado[NUM_H];
 
   return 0;
 }
