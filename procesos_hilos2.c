@@ -13,8 +13,8 @@ int main(){
   if( idf == 0 ){
     pthread_create(&h0, NULL, mensajeHijo, (void*)(size_t)1);
     pthread_create(&h2, NULL, mensajeHijo, (void*)(size_t)2);
-
-
+    pthread_join(h0, NULL);
+    pthread_join(h2, NULL);
   }else{
 
   }
