@@ -16,6 +16,11 @@ int main(){
     pthread_join(h0, NULL);
     pthread_join(h2, NULL);
   }else{
+    pthread_create(&h0, NULL, mensajePadre, (void*)(size_t)1);
+    pthread_create(&h2, NULL, mensajePadre, (void*)(size_t)2);
+    pthread_join(h0, NULL);
+    pthread_join(h2, NULL);
+
 
   }
 
