@@ -10,6 +10,14 @@ int main(){
 
   idf = fork();
 
+  if( idf == 0 ){
+    pthread_create(&h0, NULL, mensajeHijo, (void*)(size_t)1);
+
+
+  }else{
+
+  }
+
 
 
   return 0;
