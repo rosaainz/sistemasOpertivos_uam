@@ -8,7 +8,7 @@ int main(){
   pthread_t h0, h1;
   int idf = 0;
 
-
+  idf = fork();
 
 
 
