@@ -17,6 +17,15 @@ void * llena_renglon(void*arg){
   return NULL;
 }
 
+void * imprimir_matriz(){
+  for(int i=0; i<N; i++){
+    for(int j=0; j<N; j++){
+      printf("%d", matriz[i][j]);
+    }
+    printf("\n");
+  }
+  return 0;
+}
 
 int main(){
   pthread_t h[N];
@@ -31,7 +40,15 @@ int main(){
     d[i].valor = valor;
 
     pthread_create(&h[i], NULL, llena_renglon, (void*)&d[i]);
+
   }
+
+  for(int i=0;i<N; i++ ){
+    pthread_join(h[i], NULL);
+   }
+
+
+  imprimir_matriz();
 
   return 0;
 }
