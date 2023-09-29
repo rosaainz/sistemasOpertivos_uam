@@ -10,7 +10,11 @@ typedef struct{
 }dato;
 
 void * llena_renglon(void*arg){
-  return 0;
+  dato *d = (dato*)arg;
+  for(int i=0; i<N; i++){
+    matriz[d->id][i] = d->valor;
+  }
+  return NULL;
 }
 
 
