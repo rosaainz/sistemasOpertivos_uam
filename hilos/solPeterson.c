@@ -1,6 +1,11 @@
 #include<stdio.h>
 #include<pthread.h>
 
+int memComp[2];
+
+int turn = -1;
+int interes[2];
+
 void * intentaRegionCritica(void* args){
   return 0;
 }
