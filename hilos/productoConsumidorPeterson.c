@@ -11,21 +11,35 @@ int turno = -1;
 //0 para falso 1 para verdadero
 int interes[2];
 
+int produce(){
+  return 0;
+}
+
+int consume(){
+  return 0;
+}
+
 void * intentaRegionCritica(void* args){
   int id = (int)(size_t)args;
 
-  for(int i=0; i<5; i++){
+  //Solucion Peterson
     turno = id;
     interes[id] = 1;
 
+    //Bloqueo o continuacion
+    //Iniciar region critica
     while(turno ==id && interes[1-id]==1);
 
-    memComp[id] = memComp[id] + 1;
-    memComp[1 - id] = memComp[1 - id] - 1;
-    printf("%d, %d\n", memComp[id], memComp[1 - id]);
+    //Acceso a region critica
+    if(id ==0)
+      produce();
+    else
+      consume();
 
+    //Termina region critica
+    //Libera region critica
     interes[id] = 0;
-  }
+
   pthread_exit(0);
   return 0;
 }
@@ -36,6 +50,5 @@ int main(){
   pthread_create(&h0, NULL, intentaRegionCritica, (void*)(size_t)1);
   pthread_join(h0, NULL);
   pthread_join(h1, NULL);
-
   return 0;
 }
