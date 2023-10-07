@@ -24,7 +24,15 @@ void imprimirArreglo(){
 }
 
 
-void sumar (){
+int sumar (int numHilo){
+  int inicio =  numHilo * 10;
+  int fin = (numHilo+1)*10;
+  int res=0;
+
+  for(int i=inicio; i<fin; i++){
+    res += A[i];
+  }
+  return res;
 }
 
 int main(){
@@ -42,6 +50,8 @@ int main(){
   for(int i=0; i<10; i++){
     pthread_join(h[i], NULL);
   }
+
+  pthread_mutex_unlock(&candado);
   return 0;
 }
 
