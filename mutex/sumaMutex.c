@@ -64,6 +64,8 @@ int main(){
   }
 
   pthread_mutex_unlock(&candado);
+
+  printf("\nSuma total: %d", sumaTotal );
   return 0;
 }
 
