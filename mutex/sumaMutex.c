@@ -3,10 +3,32 @@
 
 int A[100];
 pthread_mutex_t candado;
-int suma=0;
+int sumaTotal=0;
 
 
-void * intentaRegionCritica(){
+int sumar (int numHilo){
+  int inicio =  numHilo * 10;
+  int fin = (numHilo+1)*10;
+  int res=0;
+
+  for(int i=inicio; i<fin; i++){
+    res += A[i];
+  }
+  return res;
+}
+
+
+void * intentaRegionCritica(void * args){
+  int id = (int)(size_t)args;
+  int sumaHilo = sumar(id);
+
+  pthread_mutex_lock(&candado);
+    //inicia la region critica
+    sumaTotal += sumaHilo;
+    //termina region critica
+  //desbloquear
+  pthread_mutex_unlock(&candado);
+  pthread_exit(0);
   return 0;
 }
 
@@ -24,16 +46,6 @@ void imprimirArreglo(){
 }
 
 
-int sumar (int numHilo){
-  int inicio =  numHilo * 10;
-  int fin = (numHilo+1)*10;
-  int res=0;
-
-  for(int i=inicio; i<fin; i++){
-    res += A[i];
-  }
-  return res;
-}
 
 int main(){
   pthread_t h[10];
