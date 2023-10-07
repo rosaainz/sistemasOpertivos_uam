@@ -28,7 +28,20 @@ void sumar (){
 }
 
 int main(){
+  pthread_t h[10];
+
   llenarArreglo();
   imprimirArreglo();
+
+    //inicia mutex
+  pthread_mutex_init(&candado, NULL);
+  for(int i=0; i<10; i++){
+    pthread_create(&h[i], NULL, intentaRegionCritica, (void*)(size_t)i);
+  }
+
+  for(int i=0; i<10; i++){
+    pthread_join(h[i], NULL);
+  }
   return 0;
 }
+
